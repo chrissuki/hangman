@@ -1,0 +1,13 @@
+.border-look{
+	border:2px solid black;
+	height:300px;
+}
+
+#picDisplay{
+	width:100%;
+	height:160px;
+}
+.littlePic{
+	width: 123%;
+    height: 68px;
+}

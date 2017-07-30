@@ -1,3 +1,9 @@
+body{
+	margin:0px 0px 0px 0px;
+	font-family: 'Indie Flower', cursive;
+	background-image: url('http://image.blingee.com/images17/content/output/000/000/000/5fd/527577475_1669316.gif');
+}
+
 .border-look{
 	border:2px solid black;
 	height:300px;
@@ -8,6 +14,103 @@
 	height:160px;
 }
 .littlePic{
-	width: 123%;
-    height: 68px;
+	width: 79%;
+    height: 100px;
+}
+
+.titlePic{
+	height:200px;
+	margin:0px 0px 0px 0px;
+	padding:0px;
+	float:left;
+}
+
+.rap{
+	width:20%;
+}
+.hangman{
+	width:75%;
+	border-bottom:2px solid white;
+}
+
+.box{
+	height:350px;
+	border:3px solid white;
+	float:left;
+	margin:20px 20px 20px 20px;
+	background-image: url('http://vipdir.eu/web/images/upload/657/vip-dir-slider-background.jpg');
+}
+.leftBox{
+	clear:both;
+	width:25%;
+}
+.lettersUsed{
+	text-align:center;
+	text-decoration: underline;
+}
+#letters{
+	font-size:150%;
+	margin-left:10px;
+}
+h2{
+	text-align:center;
+}
+h3{
+	margin-left:10px;
+}
+button {
+	font-size:90%;
+	margin: 0px 3px 0px 10px;
+}
+.picture{
+	width:100%;
+	height:180px;
+	margin:0px 0px 0px 0px;
+}
+.grey{
+	background-color:grey;
+	color:white;
+}
+.green{
+	background-color:green;
+	color:white;
+}
+.red{
+	background-color:darkred;
+	color:white;
+}
+.black{
+	background-color:black;
+	color:white;
+}
+.class{
+	background-color:white;
+	font:white;
+}
+.middleBox{
+	width:35%;	
+	background-color:white;
+}
+
+.record{
+	width: 28%;
+    height: 50px;
+    margin-left: 10px;
+}
+
+.spacer{
+	letter-spacing:7px;
+	text-align:center;
+	color:;
+}
+.rightBox{
+	width:25%;
+}	
+
+.gameOver{
+	text-align:center;
+	color:red;
+}
+.space{
+	margin-left:5px;
 }

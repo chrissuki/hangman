@@ -5,188 +5,234 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hangman</title>
+  <title>Hangman Rappers</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
+
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
   	<!-- We need to bring in the bootstrap CSS -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<!-- google fonts link-->
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
 	<!-- css link -->
   	<link rel ="stylesheet" href="style.css">
 </head>
-
 <body>
-	<div class = "fluid container">
-		<div class = "row">
-			<div class = "col-xs-2 col-sm-2 col-ms-2 col-ls-2 text-center">
-				<img class = "littlePic" src = "https://i.ytimg.com/vi/W8kxQS0EL5A/maxresdefault.jpg">
-			</div>
-			<div class = "col-xs-10 col-sm-10 col-ms-10 col-ls-10 text-center">
-				<h1>
-					Famous Dans <span id = "gameOver"></span>
-					<span id = "youWin"></span>
-				</h1>
-			</div>
-		<div>
-
-		<div class = "row second-row">
-			<div class = "col-xs-3 col-sm-3 col-ms-3 col-ls-3 border-look">
-				<h2 class = "text-center">What's his last name</h2><span id = "picture"><img id = "picDisplay" class = "pic"https://i.ytimg.com/vi/W8kxQS0EL5A/maxresdefault.jpg" alt"pic"> </span>
-			</div>
-
-			<div class = "col-xs-5 col-sm-5 col-ms-5 col-ls-5 text-center border-look">
-				<h2>
-					Press Any Key to Start: 
-				</h2>
-				<h3> <span id = "dashRow"></span> </h3>
-			</div>
-
-
-			<div class = "col-xs-4 col-sm-4 col-ms-4 col-ls-4 text-center border-look">
-				<h3>
-					Number of guesses remaining:
-					<span id = "guesses"> </span>
-				</h3>
-				<h3>
-					Letters used: <br>
-					<span id = "lettersUsed"></span>
-				</h3>
-				<h3>
-					wins:
-					<span id = "wins"></span>
-				</h3>
-				<h3>
-					loses:
-					<span id = "loses"></span>
-				</h3>
-			</div>
-		<div>
-
+	<div>
+		<img class = "titlePic rap" src = "90s-rap.jpg">	
+		<img class = "titlePic hangman" src = "hangmantitle.jpg">
 	</div>
+
+	<div class = "box leftBox">
+		<img id = "pic" class = "picture" src = "90s-Hip-Hop.jpg">
+		<h2>HINTS</h2>
+		<button  class = "grey" type="button" onclick="rapper.makePicture()">Image</button>
+		<button class = "green" type="button" onclick="rapper.playMusic()">Music</button>
+		<button class = "red" type="button" onclick= "rapper.stopMusic()">Stop Music</button> <br> <br>
+		<img class = "record" src = "http://www.freeiconspng.com/uploads/record-icon-9.png" alt = "record">
+		<button class = "black" type = "button" onclick = "rapper.stratch()">Stratch The record</button>
+	</div>
+
+	<div class = "box middleBox">
+		<h2> Press Any Key To Start</h2><br>
+		<h3 class = "spacer"> <span id = "dashRow"></span> </h3>
+	</div>
+
+	<div class = "box rightBox">
+		<h3 class = "lettersUsed">LETTERS USED<br></h3><span id = "letters"> </span>
+		<h3>Guesses Left: <span class = "space" id = "guesses"> </span></h3>
+		<h3>Wins: <span class = "space" id = "wins"> </span></h3>
+		<h3>Loses: <span class = "space" id = "loses"> </span></h3>
+		<h3 class = "gameOver"><span id = "gameOver"></span></h3>
+	</div>	
+</body>	
 
 <script>
 
-var audio = new Audio('snoop.mp3');
-audio.play();
-//variables	
-var danArray = ["MARINO", "AKROYD", "RATHER", "AUERBACH", "KALTENBAUGH"];
-var lettersUsed = [];
-var word = "";
-var dashRow = [];
-var letter = "";
-var guess = 11;
-var wins = 0;
-var loses = 0;
-var randomNum = 0;
-//array of 
-var pictureHTTP = [
-	"https://thenypost.files.wordpress.com/2013/08/121398jets4fs061117-525x415.jpg?quality=90&strip=all&w=524",
-	"http://www.moviegeek.eu/wp-content/uploads/2017/06/ghostbusters-official-image-300x225.jpg",
-	"https://cdn.newsbusters.org/images/rathergate.jpg", 
-	"http://www.guitarworld.com/sites/default/files/public/styles/article_detail_featured__622x439_/public/dan%20a_0_1.jpg",
-	"https://www.stripes.com/polopoly_fs/1.41772.1273625378!/image/2539234389.jpg_gen/derivatives/landscape_900/2539234389.jpg"];
-
-document.getElementById("picDisplay").src=pictureHTTP[4];
+// object
+	var rapper = {
+		//variable-arrays
+		name : ["NAS", "SNOOPDOG", "COOLIO", "ICECUBE", "DRDRE","EMINIM","LLCOOLJ"],
+		pictureHTTP : [
+			"http://static.wixstatic.com/media/322e06_3aaa3487362a4e3fa24508a6afc5b0af.jpg",
+			"http://e.snmc.io/lk/f/a/676e53ac74df958ecef2b32e416f5ee8/1133746.jpg",
+			"https://pbs.twimg.com/profile_images/3593498900/8a67877233920d1b2b89f4d3a67ec533_400x400.jpeg",
+			"https://qph.ec.quoracdn.net/main-qimg-0e9acf5d159b0ff54ae7959978f9b397-c",
+			"http://img.wennermedia.com/article-leads-horizontal/rs-206562-GettyImages-482780831-2.jpg",
+			"http://hiphopgoldenage.com/wp-content/uploads/2015/08/Eminem-michael58-30629860-992-813.jpg",
+			"https://i0.wp.com/true-magazine.com/wp-content/uploads/2015/04/ll-cool-j.jpg?ssl=1"
+		],
+		songs : [
+			"nas.mp3", "snoop.mp3", "Coolio.mp3" , "Ice.mp3" , "dre.mp3" , "Eminem.mp3" , "llcoolj.mp3"
+		],
 
 
-//functions
-//picks word from array and also make makes dashrow
-function createWord(){
-	//reset variables
-	guess = 11;
-	finishedGame = false;
-	//resets dashrow
-	for (var i = 0; i < 20; i++){
-			dashRow.pop();
-	}
-	//resets game display
-	document.getElementById("gameOver").innerHTML = "";
-	// random number 0 to length of array - 1 
-	var randomNum = Math.floor((Math.random() * danArray.length));
-	//pick word in array
-	word = danArray[randomNum];
-	console.log(randomNum + " - rando #" + danArray.length + " -array length");
-	console.log(word);
-	//display image of word
-	document.getElementById("picDisplay").src=pictureHTTP[randomNum];
+		randomNum : 0,
+		letter: "",
+		dashRow: [""],
+		wins:0,
+		loses:0,
+		guesses:11,
+		lettersUsed:"",
+		word:"",
+		i: 0,
+		hit : false,
+		finishedGame : false,
+		audio : new Audio('snoop.mp3'),
+		// var audio = new Audio('snoop.mp3');
 
-	for (var i = 0; i < word.length; i++){
-		dashRow[i] = "_ ";
-	}
-	console.log(dashRow);
-	//displays dashRow
-	document.getElementById("dashRow").innerHTML = dashRow;
-	document.getElementById("guesses").innerHTML = guess;
-	document.getElementById("wins").innerHTML = wins;
-	document.getElementById("loses").innerHTML = loses;
-	document.getElementById("lettersUsed").innerHTML = "";
+		resetBoard:function(){
+			//reset pic
+			document.getElementById("pic").src = "90s-Hip-Hop.jpg";
+			this.guesses = 11; 
+			this.finishedGame = false;
+			// erases array values -- memory allo and to not interfere with new array if it is shorter
+			for (var i = 0; i <20 ; i++){
+				this.dashRow.pop();
+			}
+			document.getElementById("gameOver").innerHTML = "";
+			//random picks an array num and get word from array "name"
+			this.randomNum = Math.floor((Math.random()*this.name.length));
+			this.word = this.name[this.randomNum];
+			//console log name
+			console.log(this.name[this.randomNum] + " = name");
+			//makes dashrow
+			for (var i = 0; i < this.word.length; i++){
+				this.dashRow[i]= "_";
+			}
+			console.log("dashRow = " + this.dashRow);
+			//clears dashRow
+			document.getElementById("dashRow").innerHTML = "";
+			// displays dashrow
+			for (var j = 0; j < this.word.length; j++){
+				console.log("tester");
+				document.getElementById("dashRow").innerHTML += this.dashRow[j];
+			}
+			// make audio into a array song
+			this.audio = new Audio(this.songs[this.randomNum]);
+			//resets values to restart game
+			document.getElementById("guesses").innerHTML = 11;
+			document.getElementById("letters").innerHTML = "";
+			document.getElementById("wins").innerHTML = this.wins;
+			document.getElementById("loses").innerHTML = this.loses;
+		},// ends reset function
 
-}
-//main
-createWord();
-//onclick 
-document.onkeyup = function(){
-
-	var hit = false;
-	var finishedGame = false;
-	//changes onkey to uppercase
-	letter = event.key.toUpperCase();
-	//checks to see if letter is in array 
-	for (var i = 0; i < word.length; i++){
-		//console.log("loop is working" + i);
-		if (letter == word[i]){
-			//console.log(letter + "=" + word[i]);
-			dashRow[i] = letter;
-			//console.log(dashRow[i]);
-			document.getElementById("dashRow").innerHTML = dashRow;
-			hit = true;
+		//changes pic with button
+		makePicture:function(){
+			document.getElementById("pic").src = this.pictureHTTP[this.randomNum]
+		},
+		//chagnes music with button
+		playMusic:function(){
+			this.audio.play();
+		},
+		//stops music with button 
+		stopMusic:function(){
+			this.audio.pause();
+		},
+		stratch:function(){
+			new Audio('backspin.mp3').play();
 		}
-	}//ends loop
 
-	if (hit === false){
-		document.getElementById("lettersUsed").innerHTML += letter;
-		guess--;
-		document.getElementById("guesses").innerHTML = guess;
-	}
+		
+	}//ends object	
+	
+	//outside object
+	rapper.resetBoard();
 
-	if (guess === 0){
-		document.getElementById("gameOver").innerHTML = "GAME OVER!!! YOU LOSE";
-		loses++;
-		document.getElementById("picDisplay").src=pictureHTTP[randomNum];
-		console.log(randomNum + "loss random number");
-		console.log("wrong function");
-		//delay 1 second and then resets board
-		setTimeout(function(){ createWord(); }, 1000);
-	}
-	//makes finishGame = true if there are no dashes in dashRow array
-	for (var i= 0; i < word.length; i++){
-		if (dashRow[i] != "_ "){
-			finishedGame = true;
+	document.onkeyup = function(){
+		rapper.letter = event.key.toUpperCase();
+		console.log(rapper.letter);
+		// makes and displays dashRow
+		for (var i = 0; i < rapper.word.length; i++){
+			if (rapper.letter == rapper.word [i]){
+				rapper.dashRow[i] = rapper.letter;
+				// clears dashRow
+				document.getElementById("dashRow").innerHTML = "";
+				// displays dashrow
+				for (var j = 0; j < rapper.word.length; j++){
+					document.getElementById("dashRow").innerHTML += rapper.dashRow[j];
+				}
+				rapper.hit = true;
+				console.log("hit");
+	
+			}	
+		}//ends loop
+		console.log("guess = " + rapper.dashRow);
+		// if letter not in word.... display letter in letterUsed ... -1 guess and display
+		if (rapper.hit === false) {
+			document.getElementById("letters").innerHTML += rapper.letter;
+			rapper.guesses--;
+			document.getElementById("guesses").innerHTML = rapper.guesses;
+			console.log("--miss--"); 
 		}
-		else finishedGame = false;
-		console.log(finishedGame + "finishedGame");
+		//reset hit variable
+		rapper.hit = false;
+		//if player is out of guesses.... increase losses, game over display, delay, reset board
+		if (rapper.guesses == 0){
+			document.getElementById("gameOver").innerHTML= "GAMEOVER!!!"
+			document.getElementById("pic").src = "http://ri.pinger.pl/pgr387/459c1d39001e168252eade95/6c69aa13001e168252d32b05.jpg";
+			console.log("game over");
+			rapper.loses++;
+			document.getElementById("loses").innerHTML = rapper.loses;
+			// turn off music
+			rapper.stopMusic();
+			//delay 1.5 second
+			var delayMillis = 1500; 
+			//delay -- resetBoard
+			setTimeout(function() {
+ 				//reset game display
+				rapper.resetBoard();
+			}, delayMillis);
+
+
+		}
+		console.log("dashrow = " + rapper.dashRow);
+		console.log("word = " + rapper.word);
+		console.log("length = " + rapper.word.length);
+		//declare variable to count dashes
+		var letterCounter = 0;
+		//make finishGame true if there are no dashes in dashRow
+		for (var i = 0; i < rapper.word.length ;i++){
+			if (rapper.dashRow[i] !== "_"){
+				letterCounter++;
+				console.log("letter counter = " + letterCounter);
+				console.log("word length = " + rapper.word.length);
+			}
+		}	
+
+		if (letterCounter === rapper.word.length){
+				rapper.finishedGame = true;
+				console.log("test");
+			}
+			else{
+				rapper.finishedGame = false;
+			}
+
+		//if finishedGame is true : + wins, delay, resets display
+		if (rapper.finishedGame === true){
+			document.getElementById("gameOver").innerHTML = "YOU WIN";
+			document.getElementById("pic").src = "http://win1win.webs.com/photos/win/7.jpg";
+			console.log("youwin");
+			rapper.wins ++ ;
+			// turn off music
+			rapper.stopMusic();
+			//delay 1.5 second
+			var delayMillis = 1500; 
+			//delay -- resetBoard
+			setTimeout(function() {
+ 				//reset game display
+				rapper.resetBoard();
+			}, delayMillis);
+
+		}
 	}
-
-	if (finishedGame === true) {
-		document.getElementById("gameOver").innerHTML = "YOU WIN";
-		wins++;
-		//delay 1 second and then resets board
-		setTimeout(function(){ createWord(); }, 2000);
-	}
-
-
-
-} // ends function onkeyup
+ 
 
 
 </script>
-
-
-</body>	
 </html>
 	

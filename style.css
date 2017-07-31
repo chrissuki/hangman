@@ -17,6 +17,14 @@ body{
 	width: 79%;
     height: 100px;
 }
+.rapTitle{
+	font-size: 230%;
+    margin: 46px 10px 0px 0px;
+}
+.pressAny{
+	font-size: 137%;
+    margin: 52px 0px 0px 0px;
+}
 
 .titlePic{
 	height:200px;

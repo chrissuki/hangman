@@ -19,6 +19,7 @@ body{
 }
 .rapTitle{
 	font-size: 230%;
+	font-weight: bold;
     margin: 46px 10px 0px 0px;
 }
 .pressAny{
@@ -55,6 +56,8 @@ body{
 .lettersUsed{
 	text-align:center;
 	text-decoration: underline;
+	margin-top:50px;
+	margin-left:0px;
 }
 #letters{
 	font-size:150%;
@@ -64,7 +67,7 @@ h2{
 	text-align:center;
 }
 h3{
-	margin-left:10px;
+	margin-left:30px;
 }
 button {
 	font-size:90%;
